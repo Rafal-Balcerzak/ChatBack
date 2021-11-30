@@ -30,6 +30,6 @@ public class PublisherMq {
     @PostMapping("/addMessage")
     public void post(@RequestBody ChatMessage message) {
         Gson gson = new Gson();
-        rabbitTemplate.convertAndSend("topic", gson.toJson(message));
+        rabbitTemplate.convertAndSend("MyExchange", null, gson.toJson(message));
     }
 }
